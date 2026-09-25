@@ -1,7 +1,7 @@
 {
   "name": "Brierfield Publishing",
   "domain": "https://brierfieldpublishing.co.uk",
-  "email": "darren@brierfieldpublishing.co.uk",
+  "email": "contact@brierfieldpublishing.co.uk",
   "pages": [
     {"file":"index.html","title":"Brierfield Publishing","description":"Brierfield Publishing: independent fiction, children’s books and reflective publishing.","active":"","content":"home.html"},
     {"file":"books.html","title":"Books | Brierfield Publishing","description":"Explore books and forthcoming titles from Brierfield Publishing.","active":"books","content":"books.html"},
