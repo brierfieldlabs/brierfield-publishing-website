@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#071827">
+  <meta name="description" content="{{DESCRIPTION}}">
+  <link rel="canonical" href="{{CANONICAL}}">
+  <link rel="stylesheet" href="assets/styles.css">
+  <title>{{TITLE}}</title>
+  <script>document.documentElement.classList.add("js")</script>
+  <script defer src="assets/site.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html" aria-label="Brierfield Publishing home">
+        <img src="assets/logo-horizontal-transparent.png" alt="Brierfield Publishing">
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-menu-toggle>
+        <span class="menu-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>Menu</span>
+      </button>
+      <nav class="site-nav" id="primary-nav" aria-label="Primary" data-nav>
+        <a {{NAV_BOOKS}} href="books.html">Books</a>
+        <a {{NAV_AUTHORS}} href="authors.html">Authors</a>
+        <a {{NAV_ABOUT}} href="about.html">About</a>
+        <a {{NAV_SERVICES}} href="services.html">Publishing Services</a>
+        <a class="nav-contact" {{NAV_CONTACT}} href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+{{CONTENT}}
+  </main>
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <strong>Brierfield Publishing</strong>
+        <p>Good books. A calmer world.</p>
+      </div>
+      <nav aria-label="Footer">
+        <a href="books.html">Books</a>
+        <a href="authors.html">Authors</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Publishing Services</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </div>
+    <div class="wrap footer-bottom">© 2026 Brierfield Publishing · United Kingdom</div>
+  </footer>
+</body>
+</html>

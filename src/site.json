@@ -1,0 +1,15 @@
+{
+  "name": "Brierfield Publishing",
+  "domain": "https://brierfieldpublishing.co.uk",
+  "email": "darren@brierfieldpublishing.co.uk",
+  "pages": [
+    {"file":"index.html","title":"Brierfield Publishing","description":"Brierfield Publishing: independent fiction, children’s books and reflective publishing.","active":"","content":"home.html"},
+    {"file":"books.html","title":"Books | Brierfield Publishing","description":"Explore books and forthcoming titles from Brierfield Publishing.","active":"books","content":"books.html"},
+    {"file":"authors.html","title":"Authors | Brierfield Publishing","description":"Meet the authors and pen names represented in the Brierfield Publishing catalogue.","active":"authors","content":"authors.html"},
+    {"file":"about.html","title":"About | Brierfield Publishing","description":"About Brierfield Publishing, an independent UK publisher focused on careful book production.","active":"about","content":"about.html"},
+    {"file":"services.html","title":"Publishing Services | Brierfield Publishing","description":"Book production, cover, ISBN, metadata and distribution support from Brierfield Publishing.","active":"services","content":"services.html"},
+    {"file":"contact.html","title":"Contact | Brierfield Publishing","description":"Contact Brierfield Publishing by email for book, rights and publishing-service enquiries.","active":"contact","content":"contact.html"},
+    {"file":"privacy.html","title":"Privacy | Brierfield Publishing","description":"Privacy information for the Brierfield Publishing website.","active":"","content":"privacy.html"},
+    {"file":"404.html","title":"Page not found | Brierfield Publishing","description":"Page not found.","active":"","content":"404.html"}
+  ]
+}

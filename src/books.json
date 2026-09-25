@@ -1,0 +1,74 @@
+[
+  {
+    "slug":"the-last-photograph",
+    "title":"The Last Photograph",
+    "author":"Darren Upton",
+    "meta":"The Unseen",
+    "category":"Fiction",
+    "image":"assets/the-last-photograph.jpg",
+    "description":"A novel in The Unseen series."
+  },
+  {
+    "slug":"her-fathers-eyes",
+    "title":"Her Father’s Eyes",
+    "author":"Darren Upton",
+    "meta":"Fiction",
+    "category":"Fiction",
+    "image":"assets/her-fathers-eyes.jpg",
+    "description":"Fiction by Darren Upton."
+  },
+  {
+    "slug":"the-parish-council-has-questions",
+    "title":"The Parish Council Has Questions",
+    "author":"Fraser Verran",
+    "meta":"Nether Fell",
+    "category":"Mystery",
+    "image":"assets/parish-council.png",
+    "description":"The first Nether Fell mystery featuring Margaret Preece."
+  },
+  {
+    "slug":"the-windermere-fellowship",
+    "title":"The Windermere Fellowship",
+    "author":"Ben Blackwood",
+    "meta":"Coming soon",
+    "category":"Horror",
+    "image":null,
+    "description":"A forthcoming horror title by Ben Blackwood."
+  },
+  {
+    "slug":"noodle-and-me",
+    "title":"Noodle & Me",
+    "author":"Debra Upton",
+    "meta":"Second Edition",
+    "category":"Children’s",
+    "image":"assets/noodle-and-me.jpg",
+    "description":"A children’s book by Debra Upton."
+  },
+  {
+    "slug":"my-amazing-magical-force-field",
+    "title":"My Amazing Magical Force Field",
+    "author":"Debra Upton",
+    "meta":"Children’s",
+    "category":"Children’s",
+    "image":null,
+    "description":"A children’s book by Debra Upton."
+  },
+  {
+    "slug":"inner-pathway-reflective-journal",
+    "title":"Inner Pathway Reflective Journal",
+    "author":"Debra Upton",
+    "meta":"Reflective journal",
+    "category":"Wellbeing",
+    "image":"assets/reflective-journal.jpg",
+    "description":"A reflective journal from Inner Pathway, published by Brierfield Publishing."
+  },
+  {
+    "slug":"the-marked-boy",
+    "title":"The Marked Boy",
+    "author":"Darren Upton",
+    "meta":"In development",
+    "category":"Fiction",
+    "image":null,
+    "description":"A forthcoming Darren Upton title."
+  }
+]

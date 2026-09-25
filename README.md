@@ -1,28 +1,27 @@
 # Brierfield Publishing website
 
-Public website for Brierfield Publishing.
+Public website for Brierfield Publishing, deployed to GitHub Pages.
 
-## Status
+## Stack
 
-Pre-release static site prepared for GitHub Pages.
+- Static HTML, CSS and lightweight JavaScript
+- Node.js 24 build step
+- No front-end framework and no runtime server
+- GitHub Pages deployment
+- CI on the Brierfield self-hosted runner
 
-## Development rules
+## Development
 
-- Development and Git work run on the Brierfield workbench.
-- CI runs on the Brierfield self-hosted CI runner.
-- Do not use laptops for Git, builds, or CI.
-- The IONOS-managed public domain remains unchanged until the GitHub Pages preview is approved.
+Node.js 24 is the supported build version.
 
-## Local preview
+Build with: npm run build
+Validate with: npm run check
 
-From the repository root:
+The build writes the deployable website to dist/.
 
-```sh
-python3 -m http.server 8765
-```
+## Rules
 
-Then open `http://127.0.0.1:8765/`.
-
-## Deployment
-
-Pushes to `main` validate the site and deploy it to GitHub Pages after the CT-based validation job succeeds.
+- Git, builds and CI run on Brierfield infrastructure rather than laptops.
+- Genuine Brierfield artwork is used where an approved/current asset exists.
+- A text treatment is used when there is no authoritative cover image rather than inventing artwork.
+- The IONOS-managed public domain remains unchanged until the Pages version is approved for cutover.
