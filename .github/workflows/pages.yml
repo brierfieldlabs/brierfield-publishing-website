@@ -2,17 +2,18 @@ name: Site CI and Pages
 
 on:
   push:
-    branches: [main]
+    branches: [main, staging]
   pull_request:
-    branches: [main]
+    branches: [main, staging]
   workflow_dispatch:
 
 permissions:
   contents: read
 
+# Production and staging share one Pages artifact, so deployments must not race.
 concurrency:
-  group: brierfield-publishing-website-${{ github.ref }}
-  cancel-in-progress: true
+  group: brierfield-publishing-website-pages
+  cancel-in-progress: false
 
 jobs:
   validate:
@@ -29,13 +30,12 @@ jobs:
 
       - name: Build site
         run: npm run build
-
       - name: Validate site
         run: npm run check
 
   deploy:
     name: Deploy GitHub Pages
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/staging')
     needs: validate
     runs-on: [self-hosted, Linux, X64, brierfield, normal-ci, github]
     permissions:
@@ -46,16 +46,28 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Check out source
+      - name: Check out live source
         uses: actions/checkout@v7
+        with:
+          ref: main
+          path: source-main
+
+      - name: Check out staging source
+        uses: actions/checkout@v7
+        with:
+          ref: staging
+          path: source-staging
 
       - name: Use Node 24
         uses: actions/setup-node@v6
         with:
           node-version: 24
-
-      - name: Build site
-        run: npm run build
+      - name: Build combined live and staging artifact
+        run: >-
+          node source-main/scripts/build-pages.mjs
+          --live source-main
+          --staging source-staging
+          --output _site
 
       - name: Configure Pages
         uses: actions/configure-pages@v6
@@ -63,7 +75,7 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v5
         with:
-          path: dist
+          path: _site
 
       - name: Deploy
         id: deployment
