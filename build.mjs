@@ -56,12 +56,31 @@ for (const page of site.pages) {
     .replaceAll("{{ALL_BOOKS}}", allBooksHtml);
 
   const canonicalPath = page.file === "index.html" ? "" : page.file;
+  const canonical = site.domain + "/" + canonicalPath;
+  const robots = page.file === "404.html" ? "noindex,follow" : "index,follow";
+  const socialImage = site.domain + "/" + site.socialImage;
   const activeAttr = name => page.active === name ? 'aria-current="page"' : "";
+  const structuredData = page.file === "index.html"
+    ? '  <script type="application/ld+json">\n' + JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": site.domain + "/#organization",
+        name: site.name,
+        url: site.domain + "/",
+        logo: socialImage,
+        email: site.email,
+        description: page.description,
+        slogan: site.slogan
+      }, null, 2) + '\n  </script>'
+    : "";
 
   const html = layout
     .replaceAll("{{TITLE}}", esc(page.title))
     .replaceAll("{{DESCRIPTION}}", esc(page.description))
-    .replaceAll("{{CANONICAL}}", site.domain + "/" + canonicalPath)
+    .replaceAll("{{ROBOTS}}", robots)
+    .replaceAll("{{CANONICAL}}", canonical)
+    .replaceAll("{{SOCIAL_IMAGE}}", socialImage)
+    .replaceAll("{{STRUCTURED_DATA}}", structuredData)
     .replaceAll("{{NAV_BOOKS}}", activeAttr("books"))
     .replaceAll("{{NAV_AUTHORS}}", activeAttr("authors"))
     .replaceAll("{{NAV_ABOUT}}", activeAttr("about"))
