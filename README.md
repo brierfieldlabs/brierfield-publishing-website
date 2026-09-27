@@ -12,7 +12,9 @@ A protected staging copy is available at:
 
 https://brierfieldpublishing.co.uk/staging/
 
-The staging copy is built from the `staging` branch, displays a visible test-site banner, and is marked `noindex,nofollow`.
+The staging copy is built from the `staging` branch, displays a visible test-site banner, is marked `noindex,nofollow`, has a blocking staging `robots.txt`, and does not publish a staging sitemap.
+
+Production search metadata includes canonical URLs, explicit `index,follow`, XML sitemap discovery, Open Graph/Twitter metadata and Organization JSON-LD on the home page. `npm run check` validates those search-facing artifacts.
 
 ## Stack
 
