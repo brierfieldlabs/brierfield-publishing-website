@@ -45,9 +45,8 @@ const stagingOut = join(output, "staging");
 await mkdir(stagingOut, { recursive: true });
 await cp(join(staging, "dist"), stagingOut, { recursive: true });
 
-for (const name of ["sitemap.xml", "robots.txt"]) {
-  try { await unlink(join(stagingOut, name)); } catch {}
-}
+try { await unlink(join(stagingOut, "sitemap.xml")); } catch {}
+await writeFile(join(stagingOut, "robots.txt"), "User-agent: *\nDisallow: /\n");
 
 const banner = '<div class="staging-banner" role="status">STAGING SITE · Changes here are not live</div>';
 const stagingStyle = `<style>
@@ -61,15 +60,41 @@ for (const file of (await walk(stagingOut)).filter(path => path.endsWith(".html"
 
   html = html.replace(/<link rel="canonical" href="[^"]*">/i,
     '<link rel="canonical" href="' + canonical + '">');
+  html = html.replace(/<meta property="og:url" content="[^"]*">/i,
+    '<meta property="og:url" content="' + canonical + '">');
 
-  if (!/<meta\s+name="robots"/i.test(html)) {
+  if (/<meta\s+name="robots"/i.test(html)) {
+    html = html.replace(/<meta\s+name="robots"\s+content="[^"]*"\s*>/i,
+      '<meta name="robots" content="noindex,nofollow">');
+  } else {
     html = html.replace("</head>",
-      '  <meta name="robots" content="noindex,nofollow">\n' + stagingStyle + "\n</head>");
+      '  <meta name="robots" content="noindex,nofollow">\n</head>');
+  }
+  html = html.replace(/\s*<script type="application\/ld\+json">[\s\S]*?<\/script>/gi, "");
+  if (!html.includes(".staging-banner{")) {
+    html = html.replace("</head>", stagingStyle + "\n</head>");
   }
   if (!html.includes("STAGING SITE · Changes here are not live")) {
     html = html.replace(/<body([^>]*)>/i, "<body$1>\n  " + banner);
   }
+  if (!html.includes('name="robots" content="noindex,nofollow"')) {
+    throw new Error(rel + ": staging copy must be noindex,nofollow");
+  }
+  if (!html.includes('rel="canonical" href="' + canonical + '"')) {
+    throw new Error(rel + ": staging canonical URL is incorrect");
+  }
   await writeFile(file, html);
+}
+
+const stagingRobots = await readFile(join(stagingOut, "robots.txt"), "utf8");
+if (!stagingRobots.includes("Disallow: /")) {
+  throw new Error("staging robots.txt must block crawling");
+}
+try {
+  await readFile(join(stagingOut, "sitemap.xml"), "utf8");
+  throw new Error("staging sitemap.xml must not be deployed");
+} catch (error) {
+  if (error.message === "staging sitemap.xml must not be deployed") throw error;
 }
 
 console.log("Built live site at " + output);
