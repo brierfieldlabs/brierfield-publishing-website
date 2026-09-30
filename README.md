@@ -44,9 +44,11 @@ The normal build writes the deployable website to `dist/`.
 - `staging` is the test source.
 - Pushes to either branch are validated on the Brierfield runner.
 - GitHub Pages deploys one combined artifact containing production at the domain root and staging under `/staging/`.
-- Changes should normally be reviewed on staging before being promoted to `main`.
+- **Mandatory release gate:** every change MUST be reviewed on `staging` first. Promotion to `main` requires an explicit instruction to publish/promote the reviewed change. See [`RULEBOOK.md`](RULEBOOK.md).
 
 ## Rules
+
+The mandatory website operating rules are documented in [`RULEBOOK.md`](RULEBOOK.md). The production release gate is non-optional.
 
 - Git, builds and CI run on Brierfield infrastructure rather than laptops.
 - Genuine Brierfield artwork is used where an approved/current asset exists.
