@@ -57,10 +57,13 @@
     "slug": "inner-pathway-reflective-journal",
     "title": "Inner Pathway Reflective Journal",
     "author": "Debra Upton",
-    "meta": "Reflective journal",
+    "meta": "Released 11 September 2026",
     "category": "Wellbeing",
     "image": "assets/reflective-journal.jpg",
-    "description": "A reflective journal from Inner Pathway, published by Brierfield Publishing."
+    "description": "A reflective journal from Inner Pathway, published by Brierfield Publishing.",
+    "releaseDate": "2026-09-11",
+    "releaseDateDisplay": "11 September 2026",
+    "amazonUrl": "https://www.amazon.co.uk/Inner-Pathway-Reflective-Journal-Debra/dp/1911904043"
   },
   {
     "slug": "the-marked-boy",
@@ -75,9 +78,12 @@
     "slug": "becoming-limitless",
     "title": "Becoming Limitless",
     "author": "Sam Gibson",
-    "meta": "Coming soon",
+    "meta": "Released 3 October 2026",
     "category": "Wellbeing",
     "image": "assets/becoming-limitless.svg",
-    "description": "A 12-week emotional healing and self-mastery journal by Sam Gibson."
+    "description": "A 12-week emotional healing and self-mastery journal by Sam Gibson.",
+    "releaseDate": "2026-10-03",
+    "releaseDateDisplay": "3 October 2026",
+    "amazonUrl": "https://www.amazon.co.uk/dp/1911904051"
   }
 ]
