@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Inner Pathway Reflective Journal</title>
+  <desc id="desc">Inner Pathway Counselling Reflective Journal cover thumbnail.</desc>
+  <rect width="600" height="900" fill="#fae9df"/>
+  <rect x="18" y="18" width="564" height="864" fill="none" stroke="#c86f78" stroke-width="2"/>
+  <rect x="28" y="28" width="544" height="844" fill="none" stroke="#ddb0ac" stroke-width="1"/>
+  <g fill="none" stroke="#9c2735" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="300" cy="108" r="26"/>
+    <path d="M300 209 C250 173 244 135 268 132 C282 130 293 140 300 151 C307 140 318 130 332 132 C356 135 350 173 300 209 Z"/>
+    <path d="M294 223 C245 195 205 210 215 236 C226 264 275 245 300 229"/>
+    <path d="M306 223 C355 195 395 210 385 236 C374 264 325 245 300 229"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="300" y="330" font-family="Georgia, 'Times New Roman', serif" font-size="56" letter-spacing="12" fill="#17352f">INNER</text>
+    <text x="300" y="398" font-family="Georgia, 'Times New Roman', serif" font-size="56" letter-spacing="9" fill="#17352f">PATHWAY</text>
+    <line x1="120" y1="447" x2="185" y2="447" stroke="#a43e49" stroke-width="2"/>
+    <line x1="415" y1="447" x2="480" y2="447" stroke="#a43e49" stroke-width="2"/>
+    <text x="300" y="456" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="600" letter-spacing="9" fill="#a43e49">COUNSELLING</text>
+    <text x="300" y="510" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#29463f">Finding your way back to yourself.</text>
+    <line x1="220" y1="555" x2="278" y2="555" stroke="#c78987" stroke-width="1.5"/>
+    <circle cx="300" cy="555" r="4" fill="#a43e49"/>
+    <line x1="322" y1="555" x2="380" y2="555" stroke="#c78987" stroke-width="1.5"/>
+    <text x="300" y="655" font-family="'Segoe Script', 'Brush Script MT', cursive" font-size="62" font-style="italic" fill="#a43e49">Reflective Journal</text>
+    <line x1="220" y1="710" x2="278" y2="710" stroke="#c78987" stroke-width="1.5"/>
+    <circle cx="300" cy="710" r="4" fill="#a43e49"/>
+    <line x1="322" y1="710" x2="380" y2="710" stroke="#c78987" stroke-width="1.5"/>
+    <text x="300" y="805" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#394a46">A space to notice your thoughts and emotions</text>
+    <text x="300" y="829" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#394a46">with honesty, compassion, and gentleness.</text>
+  </g>
+</svg>
