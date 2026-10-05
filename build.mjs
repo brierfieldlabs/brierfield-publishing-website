@@ -32,6 +32,21 @@ function bookCard(book, compact = false) {
     '</div></article>';
 }
 
+function releaseCard(book) {
+  const cover = book.image
+    ? '<div class="cover-art"><img src="' + esc(book.image) + '" alt="Cover of ' + esc(book.title) + '" loading="lazy"></div>'
+    : '<div class="cover-art cover-placeholder" aria-label="' + esc(book.title) + ' cover not currently shown"><span>' + esc(book.title) + '</span></div>';
+  return '<article class="book-card book-card-release">' +
+    cover +
+    '<div class="book-copy">' +
+    '<p class="book-category">' + esc(book.category) + '</p>' +
+    '<h3>' + esc(book.title) + '</h3>' +
+    '<p class="book-meta">' + esc(book.author) + ' · Released ' + esc(book.releaseDateDisplay) + '</p>' +
+    '<p class="book-description">' + esc(book.description) + '</p>' +
+    '<a class="text-link release-link" href="' + esc(book.amazonUrl) + '" target="_blank" rel="noopener noreferrer">View on Amazon <span aria-hidden="true">→</span></a>' +
+    '</div></article>';
+}
+
 const featuredSlugs = [
   "the-last-photograph",
   "the-parish-council-has-questions",
@@ -39,8 +54,15 @@ const featuredSlugs = [
   "noodle-and-me"
 ];
 
+const recentReleaseSlugs = [
+  "becoming-limitless",
+  "inner-pathway-reflective-journal"
+];
+
 const featured = featuredSlugs.map(slug => books.find(book => book.slug === slug));
+const recentReleases = recentReleaseSlugs.map(slug => books.find(book => book.slug === slug));
 const featuredHtml = featured.map(book => bookCard(book, true)).join("\n");
+const recentReleasesHtml = recentReleases.map(book => releaseCard(book)).join("\n");
 const allBooksHtml = books.map(book => bookCard(book, false)).join("\n");
 
 await rm(out, { recursive: true, force: true });
@@ -53,6 +75,7 @@ for (const page of site.pages) {
   let content = await readFile(new URL("pages/" + page.content, src), "utf8");
   content = content
     .replaceAll("{{FEATURED_BOOKS}}", featuredHtml)
+    .replaceAll("{{RECENT_RELEASES}}", recentReleasesHtml)
     .replaceAll("{{ALL_BOOKS}}", allBooksHtml);
 
   const canonicalPath = page.file === "index.html" ? "" : page.file;
