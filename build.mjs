@@ -1,11 +1,24 @@
 import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 
+import {
+  FEED_SCHEMA,
+  overlayBooks,
+  recentReleaseBooks
+} from "./scripts/hub-release-feed.mjs";
+
 const root = new URL("./", import.meta.url);
 const src = new URL("./src/", root);
 const out = new URL("./dist/", root);
 
 const site = JSON.parse(await readFile(new URL("site.json", src), "utf8"));
-const books = JSON.parse(await readFile(new URL("books.json", src), "utf8"));
+const websiteBooks = JSON.parse(await readFile(new URL("books.json", src), "utf8"));
+let hubFeed = { schema: FEED_SCHEMA, record_count: 0, records: [] };
+try {
+  hubFeed = JSON.parse(await readFile(new URL("hub-release-feed.json", src), "utf8"));
+} catch (error) {
+  if (error?.code !== "ENOENT") throw error;
+}
+const books = overlayBooks(websiteBooks, hubFeed);
 const layout = await readFile(new URL("layout.html", src), "utf8");
 
 function esc(value) {
@@ -36,6 +49,11 @@ function releaseCard(book) {
   const cover = book.image
     ? '<div class="cover-art"><img src="' + esc(book.image) + '" alt="Cover of ' + esc(book.title) + '" loading="lazy"></div>'
     : '<div class="cover-art cover-placeholder" aria-label="' + esc(book.title) + ' cover not currently shown"><span>' + esc(book.title) + '</span></div>';
+  const productUrl = book.productUrl || book.amazonUrl || "";
+  const retailer = book.productRetailer || (book.amazonUrl ? "Amazon" : "");
+  const productLink = productUrl
+    ? '<a class="text-link release-link" href="' + esc(productUrl) + '" target="_blank" rel="noopener noreferrer">View on ' + esc(retailer || "retailer") + ' <span aria-hidden="true">→</span></a>'
+    : "";
   return '<article class="book-card book-card-release">' +
     cover +
     '<div class="book-copy">' +
@@ -43,7 +61,7 @@ function releaseCard(book) {
     '<h3>' + esc(book.title) + '</h3>' +
     '<p class="book-meta">' + esc(book.author) + ' · Released ' + esc(book.releaseDateDisplay) + '</p>' +
     '<p class="book-description">' + esc(book.description) + '</p>' +
-    '<a class="text-link release-link" href="' + esc(book.amazonUrl) + '" target="_blank" rel="noopener noreferrer">View on Amazon <span aria-hidden="true">→</span></a>' +
+    productLink +
     '</div></article>';
 }
 
@@ -54,13 +72,10 @@ const featuredSlugs = [
   "noodle-and-me"
 ];
 
-const recentReleaseSlugs = [
-  "becoming-limitless",
-  "inner-pathway-reflective-journal"
-];
-
-const featured = featuredSlugs.map(slug => books.find(book => book.slug === slug));
-const recentReleases = recentReleaseSlugs.map(slug => books.find(book => book.slug === slug));
+const featured = featuredSlugs
+  .map(slug => books.find(book => book.slug === slug))
+  .filter(Boolean);
+const recentReleases = recentReleaseBooks(books, 2);
 const featuredHtml = featured.map(book => bookCard(book, true)).join("\n");
 const recentReleasesHtml = recentReleases.map(book => releaseCard(book)).join("\n");
 const allBooksHtml = books.map(book => bookCard(book, false)).join("\n");
