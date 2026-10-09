@@ -38,6 +38,20 @@ Validate with:
 
 The normal build writes the deployable website to `dist/`.
 
+### Publishing Hub release data
+
+Website presentation data remains in `src/books.json`. An exact Publishing Hub staging handoff may additionally be stored as `src/hub-release-feed.json`.
+
+During the build, matching title slugs are overlaid with Hub-owned release/catalogue truth while website-owned category and artwork choices are preserved. Recent-release cards are then derived from the resulting publication dates rather than a hard-coded list.
+
+To copy an exact Hub handoff into the website source:
+
+`npm run sync:hub-release -- /path/to/hub-staging-handoff.json`
+
+That command is intentionally guarded. It runs only when the checked-out Git branch is exactly `staging`, explicitly refuses `main`, and also refuses feature branches. Feature work tests the overlay logic without performing a real handoff.
+
+A successful Hub sync or staging build never grants production approval.
+
 ## Deployment
 
 - `main` is the production source.
