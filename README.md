@@ -69,3 +69,7 @@ The mandatory website operating rules are documented in [`RULEBOOK.md`](RULEBOOK
 - A text treatment is used when there is no authoritative cover image rather than inventing artwork.
 - The production domain is managed through GitHub Pages and IONOS DNS.
 - The website does not use release/version numbers in its public presentation or routine commit messages.
+
+## Catalogue announcement policy
+
+List only titles cleared for public mention. Keep withdrawn or independently published titles out of the public catalogue, homepage features and author page, even if historical Hub release data still exists. The catalogue currently identifies only the first Nether Fell mystery; later manuscripts remain private. Do not infer or announce a release order for authors whose first book has not been selected. Changes to pen-name attribution or availability require author confirmation; the Publishing Hub staging feed may lag behind current publication decisions.
