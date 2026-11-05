@@ -48,9 +48,7 @@ function releaseCard(book) {
 }
 
 const featuredSlugs = [
-  "the-last-photograph",
   "the-parish-council-has-questions",
-  "the-windermere-fellowship",
   "noodle-and-me"
 ];
 
